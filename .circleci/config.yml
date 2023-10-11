@@ -36,7 +36,7 @@ jobs:
           name: Deploy to EC2
           command: |
             # Replace 'YOUR_EC2_INSTANCE_IP' and '/path/on/ec2/server' with actual values
-            sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.229.246.254:/opt/apache-tomcat-9.0.81/webapps/
+            sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.229.246.254:/opt/apache-tomcat-9.0.81/webapps
 
 
 workflows:
