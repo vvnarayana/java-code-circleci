@@ -1,0 +1,45 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:11.0
+    # Add steps to the job
+    # See: https://circleci.com/docs/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: |
+            cat /etc/os-release
+            mv /home/circleci/project/circleci.pem /home/circleci/
+            chmod 777 /home/circleci/circleci.pem
+            pwd 
+            ls -la
+            mvn -v
+      - run:
+          name: Build
+          command: |
+            mvn -B -DskipTests clean package
+            mvn install
+            ls -la
+            cd target
+            chmod 777 jiracon22.war
+            ls -la
+      - run:
+          name: Test Cases
+          command: |
+            mvn test
+      - add_ssh_keys:
+          fingerprints:
+            - "cf:a2:ff:95:50:ae:02:00:56:95:f5:bb:93:3f:c3:56"
+      - deploy:
+          name: Deploy to EC2
+          command: |
+            # Replace 'YOUR_EC2_INSTANCE_IP' and '/path/on/ec2/server' with actual values
+            sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.229.246.254:/opt/apache-tomcat-9.0.81/webapps/jiracon22.war
+
+
+workflows:
+  Build: 
+    jobs:
+      - build
