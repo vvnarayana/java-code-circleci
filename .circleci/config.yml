@@ -11,6 +11,10 @@ jobs:
           name: Test
           command: |
             cat /etc/os-release
+            mv /home/circleci/project/circleci.pem /home/circleci/
+            chmod 777 /home/circleci/circleci.pem
+            cd /home/circleci
+            ls -la
             pwd 
             ls -la
             mvn -v
@@ -23,11 +27,14 @@ jobs:
             cd target
             chmod 777 jiracon22.war
             ls -la
+      
       - run:
           name: Test Cases
           command: |
-            mvn test            
-          
+            mvn test
+
+      
+
 workflows:
   Build: 
     jobs:
