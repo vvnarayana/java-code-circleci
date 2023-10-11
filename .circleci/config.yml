@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build-and-test:
+  build:
     docker:
       - image: cimg/openjdk:11.0
     # Add steps to the job
@@ -20,8 +20,12 @@ jobs:
             mvn install
             ls -la
             cd target
-            ls -la
             chmod 777 jiracon22.war
+            ls -la
+  test:
+    docker:
+    - image: cimg/openjdk:11.0
+    steps:
       # Then run your tests!
       - run:
           name: Test Cases
@@ -29,4 +33,5 @@ jobs:
 workflows:
   Build: 
     jobs:
-      - build-and-test
+      - build
+      - test
