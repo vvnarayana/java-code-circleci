@@ -19,9 +19,11 @@ jobs:
             mvn -B -DskipTests clean package
             mvn install
             ls -la
+            cd target
+            ls -la
       # Then run your tests!
       - run:
-          name: Test
+          name: Test Cases
           command: mvn test
 workflows:
   Build: 
