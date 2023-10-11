@@ -11,7 +11,7 @@ jobs:
           name: Test
           command: |
             pwd 
-            Cat /etc/os-release
+            cat /etc/os-release
             ls -la
             mvn -v
       - run:
