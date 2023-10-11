@@ -25,7 +25,11 @@ jobs:
             ls -la
       - run:
           name: Test Cases
-          command: mvn test
+          command: |
+            mvn test
+            sudo mkdir /etc/ssl/certs/java/
+            sudo apt install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" --reinstall ca-certificates-java ssl-cert openssl ca-certificates
+
       - run:
           name: Tomcat Install
           command: |
