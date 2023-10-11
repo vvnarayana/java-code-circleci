@@ -25,6 +25,10 @@ jobs:
       - run:
           name: Test Cases
           command: mvn test
+      - run:
+          name: Tomcat Install
+          command: |
+            pwd
           
 workflows:
   Build: 
