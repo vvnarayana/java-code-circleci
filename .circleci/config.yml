@@ -26,16 +26,7 @@ jobs:
       - run:
           name: Test Cases
           command: |
-            mvn test
-            sudo apt install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" --reinstall ca-certificates-java ssl-cert openssl ca-certificates
-
-      - run:
-          name: Tomcat Install
-          command: |
-            sudo useradd -m -d /opt/tomcat -U -s /bin/false tomcat
-            sudo apt-get update
-            sudo apt-get install openjdk-11-jdk
-            
+            mvn test            
           
 workflows:
   Build: 
