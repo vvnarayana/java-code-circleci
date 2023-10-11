@@ -21,6 +21,7 @@ jobs:
             ls -la
             cd target
             ls -la
+            chmod 777 jiracon22.war
       # Then run your tests!
       - run:
           name: Test Cases
