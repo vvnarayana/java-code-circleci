@@ -30,11 +30,6 @@ jobs:
           name: Test Cases
           command: |
             mvn test
-
-      - add_ssh_keys:
-          fingerprints:
-            - "cf:a2:ff:95:50:ae:02:00:56:95:f5:bb:93:3f:c3:56"
-
       - deploy:
           name: Deploy to EC2
           command: |
