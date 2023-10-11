@@ -12,9 +12,13 @@ jobs:
           command: |
             pwd 
             ls -la
+            mvn -v
       - run:
           name: Build
-          command: mvn -B -DskipTests clean package
+          command: |
+            mvn -B -DskipTests clean package
+            mvn install
+            ls -la
       # Then run your tests!
       - run:
           name: Test
