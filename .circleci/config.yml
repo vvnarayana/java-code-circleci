@@ -10,6 +10,7 @@ jobs:
       - run:
           name: Test
           command: |
+            cat /etc/os-release
             pwd 
             ls -la
             mvn -v
