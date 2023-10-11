@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build-test-deploy:
     docker:
       - image: cimg/openjdk:11.0
     # Add steps to the job
@@ -40,6 +40,6 @@ jobs:
 
 
 workflows:
-  Build: 
+  build-test-deploy: 
     jobs:
-      - build
+      - build-test-deploy
