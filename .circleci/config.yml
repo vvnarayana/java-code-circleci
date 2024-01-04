@@ -61,9 +61,11 @@ jobs:
           pipeline_number: << pipeline.number >> 
 
 workflows:
-  build-test-deploy: 
+  build and deploy: 
     jobs:
       - build:
           context: Jira
       - deploy: 
+          requires:
+            - build
           context: Jira
