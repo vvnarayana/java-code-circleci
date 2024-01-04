@@ -56,7 +56,7 @@ jobs:
             ls -la
             mv /home/circleci/project/circleci.pem /home/circleci/
             chmod 777 /home/circleci/circleci.pem
-            sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pe /home/circleci/project/target/jiracon22.war ec2-user@34.207.198.25:/opt/apache-tomcat-9.0.81/webapps/jiracon22.war
+            sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.207.198.25:/opt/apache-tomcat-9.0.81/webapps/jiracon22.war
       - jira/notify:
           environment: staging
           environment_type: staging
