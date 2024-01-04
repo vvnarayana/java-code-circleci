@@ -13,7 +13,7 @@ jobs:
           name: Test
           command: |
             cat /etc/os-release
-            mv /home/circleci/project/circleci.pem /home/circleci/
+            mv /home/circleci/project/circleci. /home/circleci/
             chmod 777 /home/circleci/circleci.pem
             pwd 
             ls -la
@@ -55,7 +55,6 @@ jobs:
             chmod 777 jiracon22.war
             ls -la
             mv /home/circleci/project/circleci.pem /home/circleci/
-            chmod 777 jiracon22.war
             chmod 777 /home/circleci/circleci.pem
             sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.207.198.25:/opt/apache-tomcat-9.0.81/webapps/jiracon22.war
       - jira/notify:
