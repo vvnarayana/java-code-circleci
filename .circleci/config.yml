@@ -1,6 +1,8 @@
 version: 2.1
+orbs:
+    jira: circleci/jira@2.1.0
 jobs:
-  build-test-deploy:
+  build:
     docker:
       - image: cimg/openjdk:11.0
     # Add steps to the job
@@ -32,14 +34,36 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "cf:a2:ff:95:50:ae:02:00:56:95:f5:bb:93:3f:c3:56"
-      - deploy:
+      - jira/notify:
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >> 
+
+  deploy:
+    docker:
+      - image: cimg/openjdk:11.0
+    # Add steps to the job
+    # See: https://circleci.com/docs/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
           name: Deploy to EC2
           command: |
             # Replace 'YOUR_EC2_INSTANCE_IP' and '/path/on/ec2/server' with actual values
+            cat /etc/os-release
+            mv /home/circleci/project/circleci.pem /home/circleci/
+            chmod 777 /home/circleci/circleci.pem
             sudo scp -o StrictHostKeyChecking=no -i /home/circleci/circleci.pem /home/circleci/project/target/jiracon22.war ec2-user@34.207.198.25:/opt/apache-tomcat-9.0.81/webapps/jiracon22.war
-
+      - jira/notify:
+          environment: staging
+          environment_type: staging
+          job_type: deployment
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >> 
 
 workflows:
   build-test-deploy: 
     jobs:
-      - build-test-deploy
+      - build:
+          context: Jira
+      - deploy: 
+          context: Jira
