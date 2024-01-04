@@ -49,6 +49,11 @@ jobs:
           command: |
             # Replace 'YOUR_EC2_INSTANCE_IP' and '/path/on/ec2/server' with actual values
             cat /etc/os-release
+            mvn -B -DskipTests clean install
+            ls -la
+            cd target
+            chmod 777 jiracon22.war
+            ls -la
             mv /home/circleci/project/circleci.pem /home/circleci/
             chmod 777 jiracon22.war
             chmod 777 /home/circleci/circleci.pem
