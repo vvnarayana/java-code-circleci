@@ -36,13 +36,13 @@ jobs:
             - "cf:a2:ff:95:50:ae:02:00:56:95:f5:bb:93:3f:c3:56"
       - jira/notify:
           pipeline_id: << pipeline.id >>
-          pipeline_number: << pipeline.number >> 
+          pipeline_number: << pipeline.number >>
       - run:
           name: Creating Dummy Artifacts
           command: |
             mkdir /tmp/artifacts;
             cd /home/circleci/project/target
-            cp -r jiracon22-1.0.0.war /tmp /tmp/artifacts
+            cp -r jiracon22-1.0.0.war /tmp
             cp -r jiracon22-1.0.0.war /tmp/artifacts
             cd /tmp
             ls -la
