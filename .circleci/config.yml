@@ -40,16 +40,12 @@ jobs:
       - run:
           name: Creating Dummy Artifacts
           command: |
+            mkdir /tmp/artifacts;
+            cd /home/circleci/project/target
+            cp -r jiracon22-1.0.0.war /tmp /tmp/artifacts
             cd /tmp
             ls -la
-            echo "my artifact file" > /tmp/art-1;
-            ls -la
-            mkdir /tmp/artifacts;
-            pwd
-            ls -la
             cd /tmp/artifacts/
-            ls -la
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
             ls -la
       - store_artifacts:
             path: /tmp/art-1
