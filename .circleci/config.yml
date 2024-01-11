@@ -25,6 +25,7 @@ jobs:
             ls -la
             cd target
             chmod 777 jiracon22.war
+            pwd
             ls -la
       - run:
           name: Test Cases
@@ -53,6 +54,7 @@ jobs:
             ls -la
             cd target
             chmod 777 jiracon22.war
+            pwd
             ls -la
             mv /home/circleci/project/circleci.pem /home/circleci/
             chmod 777 /home/circleci/circleci.pem
