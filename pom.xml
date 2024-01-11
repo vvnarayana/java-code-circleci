@@ -18,6 +18,13 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+  <scm>
+    <connection>scm:git:https://github.com/vvnarayana/java-code-circleci.git</connection>
+    <developerConnection>scm:git:https://github.com/vvnarayana/java-code-circleci.git</developerConnection>
+    <url>https://github.com/vvnarayana/java-code-circleci</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
