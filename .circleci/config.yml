@@ -42,7 +42,7 @@ jobs:
           command: |
             mkdir /tmp/artifacts;
             cd /home/circleci/project/target
-            cp -r jiracon22-1.0.0.war /tmp
+            
             cp -r jiracon22-1.0.0.war /tmp/artifacts
             cd /tmp
             ls -la
