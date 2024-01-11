@@ -40,13 +40,17 @@ jobs:
       - run:
           name: Creating Dummy Artifacts
           command: |
-            pwd
+            cd /tmp
             ls -la
             echo "my artifact file" > /tmp/art-1;
+            ls -la
             mkdir /tmp/artifacts;
             pwd
             ls -la
+            cd /tmp/artifacts/
+            ls -la
             echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+            ls -la
       - store_artifacts:
             path: /tmp/art-1
             destination: artifact-file
