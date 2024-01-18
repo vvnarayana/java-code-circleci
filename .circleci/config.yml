@@ -50,6 +50,7 @@ jobs:
       - run:
           name: Set Artifact Link Environment Variable
           command: |
+            echo "BASH_ENV: $BASH_ENV"
             touch /tmp/artifacts/$BASH_ENV
             echo "ARTIFACT_LINK=https://output.circle-artifacts.com$CIRCLE_BUILD_NUM/tmp/artifacts" >> /tmp/artifacts/$BASH_ENV
           shell: bash
