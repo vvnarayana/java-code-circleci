@@ -47,6 +47,9 @@ jobs:
             ls -la
             cd /tmp/artifacts/
             ls -la
+      
+      - store_artifacts:
+            path: /tmp/artifacts
       - run:
           name: Set Artifact Link Environment Variable
           command: |
@@ -69,9 +72,6 @@ jobs:
             ls -la
             chmod 777 ./update_jira.sh
             ./update_jira.sh
-      - store_artifacts:
-            path: /tmp/art-1
-            destination: artifact-file
       - store_artifacts:
             path: /tmp/artifacts
 
