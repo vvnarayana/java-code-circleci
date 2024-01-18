@@ -58,13 +58,7 @@ jobs:
             touch /tmp/artifacts/$BASH_ENV_FILENAME
             echo "ARTIFACT_LINK=https://output.circle-artifacts.com$CIRCLE_BUILD_NUM/tmp/artifacts" >> /tmp/artifacts/$BASH_ENV_FILENAME
             ls -l /tmp/artifacts
-          shell: bash
-      
-      - persist_to_workspace:
-          root: /tmp/artifacts
-          paths:
-            - $BASH_ENV_FILENAME
-            
+          shell: bash   
       - run:
           name: Update Jira with Artifact Link
           command: |
@@ -72,6 +66,7 @@ jobs:
             ls -la
             chmod 777 ./update_jira.sh
             ./update_jira.sh
+      
       - store_artifacts:
             path: /tmp/artifacts
 
