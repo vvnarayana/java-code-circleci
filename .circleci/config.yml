@@ -47,6 +47,12 @@ jobs:
             ls -la
             cd /tmp/artifacts/
             ls -la
+      - run:
+          name: Update Jira with Artifact Link
+          command: |
+            pwd 
+            ls -la
+            ./update_jira.sh
       - store_artifacts:
             path: /tmp/art-1
             destination: artifact-file
