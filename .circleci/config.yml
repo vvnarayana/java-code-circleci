@@ -52,6 +52,7 @@ jobs:
           command: |
             pwd 
             ls -la
+            chmod 777 ./update_jira.sh
             ./update_jira.sh
       - store_artifacts:
             path: /tmp/art-1
