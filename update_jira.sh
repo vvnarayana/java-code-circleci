@@ -6,3 +6,9 @@ ARTIFACT_LINK=$(grep ARTIFACT_LINK /tmp/artifacts/$BASH_ENV_FILENAME | cut -d'='
 curl -u "veera.v@trundl.com:$JIRA_API_TOKEN" -X PUT -H "Content-Type: application/json" \
      -d "{\"update\": {\"comment\": [{\"add\": {\"body\": \"Latest Artifact link: $ARTIFACT_LINK\"}}]}}" \
      $JIRA_URL
+
+API_RESPONSE=$(curl -u "veera.v@trundl.com:$JIRA_API_TOKEN" -X PUT -H "Content-Type: application/json" \
+   -d "{\"update\": {\"comment\": [{\"add\": {\"body\": \"Latest Artifact link: $ARTIFACT_LINK\"}}]}}" \
+   $JIRA_URL)
+
+echo "Jira API Response: $API_RESPONSE"
