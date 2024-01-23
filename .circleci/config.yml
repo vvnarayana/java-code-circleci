@@ -55,8 +55,10 @@ jobs:
           command: |
             # Specify the known location and filename of the artifact
             ARTIFACT_LOCATION="/tmp/artifacts/jiracon22-1.0.0.war"
+      
             # Create or update the environment file with the artifact link
-            echo "ARTIFACT_LINK=${ARTIFACT_LOCATION}" > /tmp/artifacts/$BASH_ENV_FILENAME
+            echo "ARTIFACT_LINK=${CIRCLE_ARTIFACTS_URL}/0${ARTIFACT_LOCATION}" > /tmp/artifacts/.bash_env
+      
             ls -l /tmp/artifacts
           shell: bash
       - run:
