@@ -53,9 +53,6 @@ jobs:
       - run:
           name: Set Artifact Link Environment Variable
           command: |
-            BASH_ENV_FILENAME=".bash_env-${CIRCLE_SHA1:0:8}-${CIRCLE_JOB}-${CIRCLE_NODE_INDEX}"
-            echo "BASH_ENV: $BASH_ENV_FILENAME"
-      
             # Specify the known location and filename of the artifact
             ARTIFACT_LOCATION="/tmp/artifacts/jiracon22-1.0.0.war"
             # Create or update the environment file with the artifact link
