@@ -55,10 +55,13 @@ jobs:
           command: |
             BASH_ENV_FILENAME=".bash_env-${CIRCLE_SHA1:0:8}-${CIRCLE_JOB}-${CIRCLE_NODE_INDEX}"
             echo "BASH_ENV: $BASH_ENV_FILENAME"
-            touch /tmp/artifacts/$BASH_ENV_FILENAME
-            find /tmp/artifacts -type f -name "*.war" | head -n 1 | xargs echo "ARTIFACT_LINK=" >> /tmp/artifacts/$BASH_ENV_FILENAME
+      
+            # Specify the known location and filename of the artifact
+            ARTIFACT_LOCATION="/tmp/artifacts/jiracon22-1.0.0.war"
+            # Create or update the environment file with the artifact link
+            echo "ARTIFACT_LINK=${ARTIFACT_LOCATION}" > /tmp/artifacts/$BASH_ENV_FILENAME
             ls -l /tmp/artifacts
-          shell: bash 
+          shell: bash
       - run:
           name: Update Jira with Artifact Link
           command: |
