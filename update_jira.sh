@@ -6,7 +6,7 @@ ARTIFACT_LOCATION="/tmp/artifacts/jiracon22-1.0.0.war"
 # Check if the artifact file exists
 if [ -f "$ARTIFACT_LOCATION" ]; then
     # Construct the comment body with the correct dynamic link
-    COMMENT_BODY="Latest Artifact link: [jiracon22-1.0.0.war](https://output.circle-artifacts.com/output/job/$CIRCLE_BUILD_NUM/artifacts/0${ARTIFACT_LOCATION})"
+    COMMENT_BODY="Latest Artifact link: [jiracon22-1.0.0.war](https://output.circle-artifacts.com/output/job/$CIRCLE_NODE_INDEX/artifacts/0${ARTIFACT_LOCATION})"
     
     # Make the Jira API call to update the comment
     curl -u "veera.v@trundl.com:$JIRA_API_TOKEN" -X PUT -H "Content-Type: application/json" \
