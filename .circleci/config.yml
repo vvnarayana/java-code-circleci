@@ -59,8 +59,6 @@ jobs:
             find /tmp/artifacts -type f -name "*.war" | head -n 1 | xargs echo "ARTIFACT_LINK=" >> /tmp/artifacts/$BASH_ENV_FILENAME
             ls -l /tmp/artifacts
           shell: bash 
-      - store_artifacts:
-            path: /tmp/artifacts  
       - run:
           name: Update Jira with Artifact Link
           command: |
@@ -68,6 +66,8 @@ jobs:
             ls -la
             chmod 777 ./update_jira.sh
             ./update_jira.sh
+      - store_artifacts:
+            path: /tmp/artifacts
       
 
   deploy:
