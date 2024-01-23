@@ -68,7 +68,11 @@ jobs:
             ./update_jira.sh
       - store_artifacts:
             path: /tmp/artifacts
-      
+      - run:
+          name: Update Jira with Artifact Link
+          command: |
+            cd /tmp/artifacts
+            ls -la
 
   deploy:
     docker:
