@@ -56,9 +56,11 @@ jobs:
             BASH_ENV_FILENAME=".bash_env-${CIRCLE_SHA1:0:8}-${CIRCLE_JOB}-${CIRCLE_NODE_INDEX}"
             echo "BASH_ENV: $BASH_ENV_FILENAME"
             touch /tmp/artifacts/$BASH_ENV_FILENAME
-            echo "ARTIFACT_LINK=https://output.circle-artifacts.com$CIRCLE_BUILD_NUM/tmp/artifacts" >> /tmp/artifacts/$BASH_ENV_FILENAME
+            find /tmp/artifacts -type f -name "*.war" | head -n 1 | xargs echo "ARTIFACT_LINK=" >> /tmp/artifacts/$BASH_ENV_FILENAME
             ls -l /tmp/artifacts
-          shell: bash   
+          shell: bash 
+      - store_artifacts:
+            path: /tmp/artifacts  
       - run:
           name: Update Jira with Artifact Link
           command: |
@@ -66,8 +68,7 @@ jobs:
             ls -la
             chmod 777 ./update_jira.sh
             ./update_jira.sh
-      - store_artifacts:
-            path: /tmp/artifacts
+      
 
   deploy:
     docker:
