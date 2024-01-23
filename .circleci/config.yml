@@ -48,16 +48,6 @@ jobs:
             cd /tmp/artifacts/
             ls -la
       
-      - store_artifacts:
-            path: /tmp/artifacts
-      - run:
-          name: Set Artifact Link Environment Variable
-          command: |
-            # Specify the known location and filename of the artifact
-            ARTIFACT_LOCATION="/tmp/artifacts/jiracon22-1.0.0.war"
-      
-            ls -l /tmp/artifacts
-          shell: bash
       - run:
           name: Update Jira with Artifact Link
           command: |
